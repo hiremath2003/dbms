@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Car Rental System | DBMS Mini Project</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f6fb;
+    color:#333;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+header h1{
+    font-size:2.8rem;
+}
+header p{
+    opacity:0.9;
+}
+
+/* SECTIONS */
+section{
+    padding:55px 10%;
+}
+h2{
+    text-align:center;
+    color:#1e3c72;
+    margin-bottom:30px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    margin-bottom:35px;
+}
+
+/* LIST */
+ul{
+    list-style:none;
+    padding:0;
+}
+ul li{
+    background:#eef2ff;
+    margin:10px 0;
+    padding:14px;
+    border-radius:8px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+table th, table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+table th{
+    background:#1e3c72;
+    color:white;
+}
+
+/* OBJECTIVES INTERACTIVE */
+.objective-btn{
+    background:#eef2ff;
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+.objective-btn:hover{
+    background:#dbeafe;
+}
+
+.details{
+    display:none;
+}
+.details img{
+    width:100%;
+    max-width:420px;
+    border-radius:12px;
+    margin:20px 0;
+}
+.back{
+    cursor:pointer;
+    font-weight:600;
+    color:#1e3c72;
+    margin-bottom:15px;
+    display:inline-block;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+    font-size:0.9rem;
+    opacity:0.9;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header h1{font-size:2rem;}
+    section{padding:40px 6%;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Online Car Rental System</h1>
+    <p>Database Management System (DBMS) Mini Project</p>
+</header>
+
+<section>
+<h2>Project Overview</h2>
+<div class="card">
+    <p><strong>Project Name:</strong> Online Car Rental System</p>
+    <p><strong>Subject:</strong> Database Management System</p>
+    <p><strong>Academic Year:</strong> 2025 – 26</p>
+    <p><strong>Course Activity:</strong> Database Design & Normalization</p>
+</div>
+</section>
+
+<section>
+<h2>Project Description</h2>
+<div class="card">
+    <p>
+        The Online Car Rental System automates traditional car rental operations
+        by offering a centralized digital platform. Customers can search, book,
+        and pay for cars online, while administrators manage vehicles, bookings,
+        and payments efficiently.
+    </p>
+    <p>
+        This system minimizes paperwork, avoids manual errors, ensures data
+        integrity, and enhances customer satisfaction through secure operations.
+    </p>
+</div>
+</section>
+
+<section>
+<h2>Project Objectives</h2>
+
+<div class="card" id="objectiveList">
+    <div class="objective-btn" onclick="openDetails('booking')">
+        Online Car Booking for Rental Service
+    </div>
+    <div class="objective-btn" onclick="openDetails('availability')">
+        Automated Car Availability Management
+    </div>
+    <div class="objective-btn" onclick="openDetails('payment')">
+        Secure Digital Payment System
+    </div>
+</div>
+
+<!-- DETAILS -->
+<div class="card details" id="detailsPage">
+
+    <span class="back" onclick="goBack()">← Back to Objectives</span>
+    <h2 id="detailTitle"></h2>
+    <p id="detailText"></p>
+
+    <img id="detailImg" src="" alt="Car Rental">
+
+    <ul id="detailList"></ul>
+</div>
+
+</section>
+
+<section>
+<h2>Team Members</h2>
+<div class="card">
+<table>
+<tr>
+    <th>Roll No</th>
+    <th>SRN</th>
+    <th>Name</th>
+</tr>
+<tr>
+    <td>522</td>
+    <td>01FE24BCS108</td>
+    <td>Srusti S Koliwad</td>
+</tr>
+<tr>
+    <td>530</td>
+    <td>01FE24BCS242</td>
+    <td>Sahana C Gunjetti</td>
+</tr>
+<tr>
+    <td>558</td>
+    <td>01FE24BCS601</td>
+    <td>Kanchana</td>
+</tr>
+<tr>
+    <td>560</td>
+    <td>01FE24BCS736</td>
+    <td>Shrusti Hiremath</td>
+</tr>
+</table>
+</div>
+</section>
+
+<footer>
+<p>School of Computer Science & Engineering</p>
+<p>DBMS Mini Project | Team 10 | © 2026</p>
+</footer>
+
+<script>
+function openDetails(type){
+    document.getElementById("objectiveList").style.display="none";
+    document.getElementById("detailsPage").style.display="block";
+
+    let title="", text="", img="", points=[];
+
+    if(type==="booking"){
+        title="Online Car Booking for Rental Service";
+        text="Customers can search, compare, and book rental cars online with instant confirmation.";
+        img="https://images.unsplash.com/photo-1503376780353-7e6692767b70";
+        points=["24/7 booking","Instant confirmation","Easy search","Less paperwork"];
+    }
+    else if(type==="availability"){
+        title="Automated Car Availability Management";
+        text="The system tracks vehicle availability in real-time and avoids double bookings.";
+        img="data:image/jpeg;base64,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";
+        points=["Real-time updates","Accurate inventory","Reduced conflicts"];
+    }
+    else{
+        title="Secure Digital Payment System";
+        text="Supports safe online payments with transaction records and billing history.";
+       
+      
+        points=["Secure transactions","Payment history","Fast checkout","Business Growth","Business Growth"];
+    }
+
+    document.getElementById("detailTitle").innerText=title;
+    document.getElementById("detailText").innerText=text;
+    document.getElementById("detailImg").src=img;
+
+    let list=document.getElementById("detailList");
+    list.innerHTML="";
+    points.forEach(p=>{
+        let li=document.createElement("li");
+        li.innerText=p;
+        list.appendChild(li);
+    });
+}
+
+function goBack(){
+    document.getElementById("detailsPage").style.display="none";
+    document.getElementById("objectiveList").style.display="block";
+}
+</script>
+
+</body>
+</html>
